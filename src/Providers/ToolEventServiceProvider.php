@@ -1,9 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Providers;
+namespace Pagzi\NovaWebhooks\Providers;
 
-use Dniccum\NovaWebhooks\Listeners\WebhookFailed;
-use Dniccum\NovaWebhooks\Listeners\WebhookSucceeded;
+use Pagzi\NovaWebhooks\Listeners\WebhookFailed;
+use Pagzi\NovaWebhooks\Listeners\WebhookSucceeded;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Spatie\WebhookServer\Events\FinalWebhookCallFailedEvent;
 use Spatie\WebhookServer\Events\WebhookCallSucceededEvent;

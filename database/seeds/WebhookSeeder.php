@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Database\Seeders;
+namespace Pagzi\NovaWebhooks\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 

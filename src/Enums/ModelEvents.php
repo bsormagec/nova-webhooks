@@ -1,17 +1,12 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Enums;
+namespace Pagzi\NovaWebhooks\Enums;
 
-use BenSampo\Enum\Enum;
-
-/**
- * @method static static Created()
- * @method static static Updated()
- * @method static static Deleted()
- */
-final class ModelEvents extends Enum
+final class ModelEvents
 {
-    const Created =   'created';
-    const Updated =   'updated';
-    const Deleted =   'deleted';
+    use EnumTrait;
+
+    public const Created = 'created';
+    public const Updated = 'updated';
+    public const Deleted = 'deleted';
 }

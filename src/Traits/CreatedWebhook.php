@@ -1,9 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Traits;
+namespace Pagzi\NovaWebhooks\Traits;
 
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
-use Dniccum\NovaWebhooks\Library\WebhookUtility;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Library\WebhookUtility;
 use Illuminate\Database\Eloquent\Model;
 
 /**

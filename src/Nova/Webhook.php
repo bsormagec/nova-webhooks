@@ -1,11 +1,13 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Nova;
+namespace Pagzi\NovaWebhooks\Nova;
 
+use ChrisWare\NovaBreadcrumbs\Traits\Breadcrumbs;
 use Coroowicaksono\ChartJsIntegration\StackedChart;
-use Dniccum\NovaWebhooks\Models\WebhookLog;
-use Dniccum\NovaWebhooks\Nova\WebhookLog as WebhookLogResource;
-use Dniccum\NovaWebhooks\Nova\Actions\WebhookTestAction;
+use Pagzi\NovaWebhooks\Models\WebhookLog;
+use Pagzi\NovaWebhooks\Nova\WebhookLog as WebhookLogResource;
+use Pagzi\NovaWebhooks\Nova\Actions\WebhookTestAction;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -14,13 +16,14 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Webhook extends WebhookResource
 {
+    use Breadcrumbs;
     /**
      * Get the fields displayed by the Webhook resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param NovaRequest $request
      * @return array
      */
-    public function fields(NovaRequest $request)
+    public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
@@ -59,10 +62,9 @@ class Webhook extends WebhookResource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function actions(NovaRequest $request)
+    public function actions(Request $request)
     {
         return [
             (new WebhookTestAction($this->model()))
@@ -71,10 +73,9 @@ class Webhook extends WebhookResource
     }
 
     /**
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function cards(NovaRequest $request)
+    public function cards(Request $request)
     {
         $resourceId = $request->get('resourceId');
         $dataSeries = [

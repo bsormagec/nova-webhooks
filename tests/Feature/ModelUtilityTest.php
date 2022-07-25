@@ -1,12 +1,12 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Feature;
+namespace Pagzi\NovaWebhooks\Tests\Feature;
 
-use Dniccum\NovaWebhooks\Library\ModelUtility;
-use Dniccum\NovaWebhooks\Tests\Models\PageView;
+use Pagzi\NovaWebhooks\Library\ModelUtility;
+use Pagzi\NovaWebhooks\Tests\Models\PageView;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Dniccum\NovaWebhooks\Tests\TestCase;
+use Pagzi\NovaWebhooks\Tests\TestCase;
 
 class ModelUtilityTest extends TestCase
 {
@@ -15,8 +15,8 @@ class ModelUtilityTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Library\ModelUtility::availableModelActions
-     * @covers \Dniccum\NovaWebhooks\Library\ModelUtility::getModels
+     * @covers \Pagzi\NovaWebhooks\Library\ModelUtility::availableModelActions
+     * @covers \Pagzi\NovaWebhooks\Library\ModelUtility::getModels
      */
     public function can_retrieve_all_of_the_available_models()
     {

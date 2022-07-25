@@ -1,9 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Http\Middleware;
+namespace Pagzi\NovaWebhooks\Http\Middleware;
 
 use Laravel\Nova\Nova;
-use Dniccum\NovaWebhooks\NovaWebhooks;
+use Pagzi\NovaWebhooks\NovaWebhooks;
 
 class Authorize
 {

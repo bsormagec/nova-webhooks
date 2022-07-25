@@ -1,9 +1,10 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Nova;
+namespace Pagzi\NovaWebhooks\Nova;
 
-use Dniccum\NovaWebhooks\Models\WebhookLog as WebhookModel;
+use Pagzi\NovaWebhooks\Models\WebhookLog as WebhookModel;
 
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -49,7 +50,7 @@ class WebhookLog extends WebhookResource
      * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
-    public function fields(NovaRequest $request)
+    public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
@@ -65,9 +66,7 @@ class WebhookLog extends WebhookResource
             Date::make(__('nova-webhooks::nova.created_at'), 'created_at')
                 ->sortable()
                 ->readonly()
-                ->displayUsing(function ($date) {
-                    return \Carbon\Carbon::make($date)->format(config('nova-webhooks.date_format'));
-                }),
+                ->displayUsing(fn($date) => \Carbon\Carbon::make($date)->format(config('nova-webhooks.date_format'))),
         ];
     }
 

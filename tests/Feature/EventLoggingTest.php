@@ -1,15 +1,15 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Feature;
+namespace Pagzi\NovaWebhooks\Tests\Feature;
 
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
-use Dniccum\NovaWebhooks\Listeners\WebhookFailed;
-use Dniccum\NovaWebhooks\Listeners\WebhookSucceeded;
-use Dniccum\NovaWebhooks\Models\Webhook;
-use Dniccum\NovaWebhooks\Tests\Models\Api\PageLike;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Listeners\WebhookFailed;
+use Pagzi\NovaWebhooks\Listeners\WebhookSucceeded;
+use Pagzi\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Tests\Models\Api\PageLike;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Dniccum\NovaWebhooks\Tests\TestCase;
+use Pagzi\NovaWebhooks\Tests\TestCase;
 use Spatie\WebhookServer\Events\FinalWebhookCallFailedEvent;
 use Spatie\WebhookServer\Events\WebhookCallSucceededEvent;
 
@@ -35,7 +35,7 @@ class EventLoggingTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Listeners\WebhookSucceeded
+     * @covers \Pagzi\NovaWebhooks\Listeners\WebhookSucceeded
      */
     public function custom_event_listener_is_listening_to_the_call_succeeded_event()
     {
@@ -51,7 +51,7 @@ class EventLoggingTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Listeners\WebhookSucceeded
+     * @covers \Pagzi\NovaWebhooks\Listeners\WebhookSucceeded
      */
     public function custom_event_listener_is_listening_to_the_call_failed_event()
     {

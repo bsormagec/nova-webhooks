@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Facades;
+namespace Pagzi\NovaWebhooks\Facades;
 
 class WebhookModels extends \Illuminate\Support\Facades\Facade
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Models\Api;
+namespace Pagzi\NovaWebhooks\Tests\Models\Api;
 
-use Dniccum\NovaWebhooks\Tests\Database\Factories\Api\PageLikeFactory;
-use Dniccum\NovaWebhooks\Tests\Resources\PageLikeResource;
-use Dniccum\NovaWebhooks\Traits\DeletedWebhook;
-use Dniccum\NovaWebhooks\Traits\UpdatedWebhook;
+use Pagzi\NovaWebhooks\Tests\Database\Factories\Api\PageLikeFactory;
+use Pagzi\NovaWebhooks\Tests\Resources\PageLikeResource;
+use Pagzi\NovaWebhooks\Traits\DeletedWebhook;
+use Pagzi\NovaWebhooks\Traits\UpdatedWebhook;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PageLike extends \Illuminate\Database\Eloquent\Model

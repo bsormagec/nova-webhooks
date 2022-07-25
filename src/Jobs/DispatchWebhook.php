@@ -1,9 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Jobs;
+namespace Pagzi\NovaWebhooks\Jobs;
 
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
-use Dniccum\NovaWebhooks\Library\WebhookUtility;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Library\WebhookUtility;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;

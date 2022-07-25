@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Http\Resources;
+namespace Pagzi\NovaWebhooks\Http\Resources;
 
 use App\Models\User;
 

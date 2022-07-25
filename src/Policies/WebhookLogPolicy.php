@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Policies;
+namespace Pagzi\NovaWebhooks\Policies;
 
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;

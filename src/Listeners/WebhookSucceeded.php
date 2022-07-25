@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Listeners;
+namespace Pagzi\NovaWebhooks\Listeners;
 
-use Dniccum\NovaWebhooks\Models\WebhookLog;
+use Pagzi\NovaWebhooks\Models\WebhookLog;
 use Spatie\WebhookServer\Events\WebhookCallSucceededEvent;
 
 class WebhookSucceeded

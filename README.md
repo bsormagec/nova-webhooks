@@ -42,7 +42,7 @@ composer require dniccum/nova-documentation
 You will then need to publish the package's assets to your application:
 
 ```bash
-php artisan vendor:publish --provider="Dniccum\NovaWebhooks\ToolServiceProvider"
+php artisan vendor:publish --provider="Pagzi\NovaWebhooks\ToolServiceProvider"
 ```
 
 Doing this action will add the following items:
@@ -68,7 +68,7 @@ There are two things that you will need to add to your application's `NovaServic
 To inform Nova of the new resource that exists outside of the Nova directory within the application, we need to add a trait to the `NovaServiceProvider` class:
 
 ```php
-use Dniccum\NovaWebhooks\Nova\UsesWebhookResource;
+use Pagzi\NovaWebhooks\Nova\UsesWebhookResource;
 
 ...
 
@@ -85,7 +85,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 Finally, you will need to register the tool within the NovaServiceProvider.php:
 
 ```php
-use Dniccum\NovaWebhooks\NovaWebhooks;
+use Pagzi\NovaWebhooks\NovaWebhooks;
 
 ...
 
@@ -158,10 +158,10 @@ The main functionality of this tool is to listen to native Eloquent model events
 
 This package provides 4 different traits that you can add to each of your Eloquent models:
 
-- `Dniccum\NovaWebhooks\Traits\CreatedWebhook`
-- `Dniccum\NovaWebhooks\Traits\UpdatedWebhook`
-- `Dniccum\NovaWebhooks\Traits\DeletedWebhook`
-- `Dniccum\NovaWebhooks\Traits\AllWebhooks`
+- `Pagzi\NovaWebhooks\Traits\CreatedWebhook`
+- `Pagzi\NovaWebhooks\Traits\UpdatedWebhook`
+- `Pagzi\NovaWebhooks\Traits\DeletedWebhook`
+- `Pagzi\NovaWebhooks\Traits\AllWebhooks`
 
 Each trait, with exception for the last (which is a shortcut to include all available traits), is associated with the event that it listens for; `CreatedWebhook` for the created Eloquent event and so on and so forth.
 
@@ -255,7 +255,7 @@ When an Eloquent Model executes a webhook call, the [webhook server package](htt
 To do this, simply add the `ShouldQueueWebhook` trait to the top of your model, like so:
 
 ```php
-use Dniccum\NovaWebhooks\Jobs\DispatchWebhook;
+use Pagzi\NovaWebhooks\Jobs\DispatchWebhook;
 
 class PageLike extends \Illuminate\Database\Eloquent\Model
 {

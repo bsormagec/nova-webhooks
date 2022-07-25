@@ -1,5 +1,5 @@
 {
-    "name": "dniccum/nova-webhooks",
+    "name": "pagzi/nova-webhooks",
     "description": "A tool for Laravel's Nova administrator panel that enables users to create webhooks that can be customized to fire on specified Eloquent model events (created, updated, etc). This allows applications to communicate with other applications and integrations (Zapier, If This Then That, etc).",
     "keywords": [
         "laravel",
@@ -9,18 +9,18 @@
     ],
     "authors": [
         {
-            "name": "Doug Niccum",
-            "email": "dniccumdesign@gmail.com",
-            "homepage": "http://dniccumdesign.com",
-            "role": "Developer"
+            "name": "PagziTech Inc",
+            "email": "burak@pagzi.com",
+            "homepage": "https://pagzi.com",
+            "role": "CTO"
         }
     ],
     "license": "MIT",
     "require": {
         "php": "^7.4|^8.0",
-        "bensampo/laravel-enum": "^4.2|^5.1",
+        "spatie/laravel-enum": "^3.0",
         "coroowicaksono/chart-js-integration": "^0.3.5",
-        "laravel/nova": "~4.0",
+        "laravel/nova": "^3.0|^4.0",
         "owenmelbz/nova-radio-field": "^1.0",
         "spatie/laravel-webhook-server": "^2.0|^3.0",
         "symfony/class-loader": "^3.4"
@@ -31,20 +31,20 @@
     },
     "autoload": {
         "psr-4": {
-            "Dniccum\\NovaWebhooks\\": "src/",
+            "Pagzi\\NovaWebhooks\\": "src/",
             "Spatie\\WebhookServer\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dniccum\\NovaWebhooks\\Tests\\": "tests",
-            "Dniccum\\NovaWebhooks\\Database\\": "database/"
+            "Pagzi\\NovaWebhooks\\Tests\\": "tests",
+            "Pagzi\\NovaWebhooks\\Database\\": "database/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Dniccum\\NovaWebhooks\\ToolServiceProvider"
+                "Pagzi\\NovaWebhooks\\ToolServiceProvider"
             ]
         }
     },

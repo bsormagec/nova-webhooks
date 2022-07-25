@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Traits;
+namespace Pagzi\NovaWebhooks\Traits;
 
-use Dniccum\NovaWebhooks\Jobs\DispatchWebhook;
+use Pagzi\NovaWebhooks\Jobs\DispatchWebhook;
 
 /**
  * When a webhook extends this trait, any webhooks will be dispatched to a job which will then be executed via queue

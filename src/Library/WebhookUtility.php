@@ -1,9 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Library;
+namespace Pagzi\NovaWebhooks\Library;
 
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
-use Dniccum\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Models\Webhook;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\PendingDispatch;
 use Illuminate\Http\Request;
@@ -63,9 +63,7 @@ class WebhookUtility
         $className  = get_class($model);
 
         $hooks = self::getWebhooks($className.':'.$action);
-        $hooks->each(function(Webhook $webhook) use ($model, $payload, $isTest) {
-            self::compileWebhook($webhook, $payload, $isTest);
-        });
+        $hooks->each(fn(Webhook $webhook) => self::compileWebhook($webhook, $payload, $isTest));
     }
 
     /**
@@ -101,10 +99,8 @@ class WebhookUtility
             return Webhook::whereJsonContains('settings', [ '\\'.$query => true ])
                 ->orWhereJsonContains('settings', [ $query => true ])
                 ->get();
-        } else {
-            return Webhook::all()->filter(function(Webhook $webhook) use ($query) {
-                return in_array($query, $webhook->settings) || in_array('\\'.$query, $webhook->settings);
-            })->values();
         }
+
+        return Webhook::all()->filter(fn(Webhook $webhook) => in_array($query, $webhook->settings, true) || in_array('\\'.$query, $webhook->settings, true))->values();
     }
 }

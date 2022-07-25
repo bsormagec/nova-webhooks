@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Traits;
+namespace Pagzi\NovaWebhooks\Traits;
 
 /**
  * Enables all the available webhooks for this model

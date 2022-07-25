@@ -1,14 +1,14 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests;
+namespace Pagzi\NovaWebhooks\Tests;
 
-use Dniccum\NovaWebhooks\Database\Migrations\CreatePageLikesTable;
-use Dniccum\NovaWebhooks\Database\Migrations\CreatePageViewsTable;
+use Pagzi\NovaWebhooks\Database\Migrations\CreatePageLikesTable;
+use Pagzi\NovaWebhooks\Database\Migrations\CreatePageViewsTable;
 use CreateWebhookLogsTable;
 use CreateWebhooksTable;
-use Dniccum\NovaWebhooks\Models\Webhook;
-use Dniccum\NovaWebhooks\Tests\Models\Api\PageLike;
-use Dniccum\NovaWebhooks\Tests\Models\PageView;
+use Pagzi\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Tests\Models\Api\PageLike;
+use Pagzi\NovaWebhooks\Tests\Models\PageView;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
@@ -54,7 +54,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Dniccum\NovaWebhooks\ToolServiceProvider::class,
+            \Pagzi\NovaWebhooks\ToolServiceProvider::class,
             \Spatie\WebhookServer\WebhookServerServiceProvider::class,
         ];
     }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Database\Factories;
+namespace Pagzi\NovaWebhooks\Database\Factories;
 
-use Dniccum\NovaWebhooks\Models\WebhookLog;
+use Pagzi\NovaWebhooks\Models\WebhookLog;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class WebhookLogFactory extends Factory
@@ -28,7 +28,7 @@ class WebhookLogFactory extends Factory
     }
 
     /**
-     * @return WebhookLogFactory|\Dniccum\NovaWebhooks\Database\Factories\WebhookLogFactory.state
+     * @return WebhookLogFactory|\Pagzi\NovaWebhooks\Database\Factories\WebhookLogFactory.state
      */
     public function notFound()
     {
@@ -42,7 +42,7 @@ class WebhookLogFactory extends Factory
     }
 
     /**
-     * @return WebhookLogFactory|\Dniccum\NovaWebhooks\Database\Factories\WebhookLogFactory.state
+     * @return WebhookLogFactory|\Pagzi\NovaWebhooks\Database\Factories\WebhookLogFactory.state
      */
     public function failed()
     {

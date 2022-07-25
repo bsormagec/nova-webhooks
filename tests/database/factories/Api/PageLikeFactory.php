@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Database\Factories\Api;
+namespace Pagzi\NovaWebhooks\Tests\Database\Factories\Api;
 
-use Dniccum\NovaWebhooks\Tests\Models\Api\PageLike;
+use Pagzi\NovaWebhooks\Tests\Models\Api\PageLike;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PageLikeFactory extends Factory

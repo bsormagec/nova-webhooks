@@ -1,11 +1,11 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Feature;
+namespace Pagzi\NovaWebhooks\Tests\Feature;
 
-use Dniccum\NovaWebhooks\Tests\Models\PageView;
+use Pagzi\NovaWebhooks\Tests\Models\PageView;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Dniccum\NovaWebhooks\Tests\TestCase;
+use Pagzi\NovaWebhooks\Tests\TestCase;
 
 class ModelTraitsTest extends TestCase
 {
@@ -14,20 +14,20 @@ class ModelTraitsTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Traits\CreatedWebhook::bootCreatedWebhook
-     * @covers \Dniccum\NovaWebhooks\Traits\CreatedWebhook::createdWebhookPayload
-     * @covers \Dniccum\NovaWebhooks\Traits\UpdatedWebhook::bootUpdatedWebhook
-     * @covers \Dniccum\NovaWebhooks\Traits\UpdatedWebhook::updatedWebhookPayload
-     * @covers \Dniccum\NovaWebhooks\Traits\DeletedWebhook::bootDeletedWebhook
-     * @covers \Dniccum\NovaWebhooks\Traits\DeletedWebhook::deletedWebhookPayload
-     * @covers \Dniccum\NovaWebhooks\Traits\AllWebhooks
+     * @covers \Pagzi\NovaWebhooks\Traits\CreatedWebhook::bootCreatedWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\CreatedWebhook::createdWebhookPayload
+     * @covers \Pagzi\NovaWebhooks\Traits\UpdatedWebhook::bootUpdatedWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\UpdatedWebhook::updatedWebhookPayload
+     * @covers \Pagzi\NovaWebhooks\Traits\DeletedWebhook::bootDeletedWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\DeletedWebhook::deletedWebhookPayload
+     * @covers \Pagzi\NovaWebhooks\Traits\AllWebhooks
      */
     public function model_has_all_available_bootable_methods_and_payloads()
     {
-        $this->assertTrue(trait_exists(\Dniccum\NovaWebhooks\Traits\CreatedWebhook::class));
-        $this->assertTrue(trait_exists(\Dniccum\NovaWebhooks\Traits\UpdatedWebhook::class));
-        $this->assertTrue(trait_exists(\Dniccum\NovaWebhooks\Traits\DeletedWebhook::class));
-        $this->assertTrue(trait_exists(\Dniccum\NovaWebhooks\Traits\AllWebhooks::class));
+        $this->assertTrue(trait_exists(\Pagzi\NovaWebhooks\Traits\CreatedWebhook::class));
+        $this->assertTrue(trait_exists(\Pagzi\NovaWebhooks\Traits\UpdatedWebhook::class));
+        $this->assertTrue(trait_exists(\Pagzi\NovaWebhooks\Traits\DeletedWebhook::class));
+        $this->assertTrue(trait_exists(\Pagzi\NovaWebhooks\Traits\AllWebhooks::class));
 
         $this->assertTrue(method_exists(PageView::class, 'bootCreatedWebhook'));
         $this->assertTrue(method_exists(PageView::class, 'bootUpdatedWebhook'));

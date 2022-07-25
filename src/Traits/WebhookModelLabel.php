@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Traits;
+namespace Pagzi\NovaWebhooks\Traits;
 
 trait WebhookModelLabel
 {

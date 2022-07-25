@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Models;
+namespace Pagzi\NovaWebhooks\Models;
 
-use Dniccum\NovaWebhooks\Database\Factories\WebhookFactory;
+use Pagzi\NovaWebhooks\Database\Factories\WebhookFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,16 +23,16 @@ class Webhook extends Model
     {
         parent::boot();
 
-        static::creating(function(\Dniccum\NovaWebhooks\Models\Webhook $webhook) {
+        static::creating(function(\Pagzi\NovaWebhooks\Models\Webhook $webhook) {
             $webhook->modified_by = \Auth::id();
             if (!$webhook->secret) {
                 $webhook->secret = self::newSecret();
             }
         });
-        static::updating(function(\Dniccum\NovaWebhooks\Models\Webhook $webhook) {
+        static::updating(function(\Pagzi\NovaWebhooks\Models\Webhook $webhook) {
             $webhook->modified_by = \Auth::id();
         });
-        static::deleting(function(\Dniccum\NovaWebhooks\Models\Webhook $webhook) {
+        static::deleting(function(\Pagzi\NovaWebhooks\Models\Webhook $webhook) {
             \DB::table('webhook_logs')
                 ->where('webhook_id', $webhook->id)
                 ->delete();

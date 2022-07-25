@@ -1,16 +1,16 @@
 <?php
 
-namespace Dniccum\NovaWebhooks;
+namespace Pagzi\NovaWebhooks;
 
 use Coroowicaksono\ChartJsIntegration\CardServiceProvider;
-use Dniccum\NovaWebhooks\Library\ModelUtility;
-use Dniccum\NovaWebhooks\Library\WebhookUtility;
-use Dniccum\NovaWebhooks\Providers\ToolEventServiceProvider;
+use Pagzi\NovaWebhooks\Library\ModelUtility;
+use Pagzi\NovaWebhooks\Library\WebhookUtility;
+use Pagzi\NovaWebhooks\Providers\ToolEventServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
-use Dniccum\NovaWebhooks\Http\Middleware\Authorize;
+use Pagzi\NovaWebhooks\Http\Middleware\Authorize;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -89,12 +89,8 @@ class ToolServiceProvider extends ServiceProvider
     {
         $this->registerAddonConfig();
 
-        $this->app->bind('webhooks', function() {
-            return new WebhookUtility;
-        });
-        $this->app->bind('webhook-models', function() {
-            return new ModelUtility;
-        });
+        $this->app->bind('webhooks', fn() => new WebhookUtility);
+        $this->app->bind('webhook-models', fn() => new ModelUtility);
         $this->app->register(ToolEventServiceProvider::class);
         $this->app->resolveProvider(CardServiceProvider::class);
     }

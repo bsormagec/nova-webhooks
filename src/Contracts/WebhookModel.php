@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Contracts;
+namespace Pagzi\NovaWebhooks\Contracts;
 
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
 
 class WebhookModel
 {
@@ -40,7 +40,7 @@ class WebhookModel
     public function addAction(string $action) : void
     {
         if (ModelEvents::hasValue($action) && !in_array($action, $this->actions)) {
-            array_push($this->actions, $action);
+            $this->actions[] = $action;
         }
     }
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Feature;
+namespace Pagzi\NovaWebhooks\Tests\Feature;
 
-use Dniccum\NovaWebhooks\Library\WebhookUtility;
-use Dniccum\NovaWebhooks\Models\Webhook;
-use Dniccum\NovaWebhooks\Tests\Models\PageView;
+use Pagzi\NovaWebhooks\Library\WebhookUtility;
+use Pagzi\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Tests\Models\PageView;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Dniccum\NovaWebhooks\Tests\TestCase;
+use Pagzi\NovaWebhooks\Tests\TestCase;
 use Illuminate\Support\Facades\Queue;
 use Spatie\WebhookServer\CallWebhookJob;
 
@@ -18,7 +18,7 @@ class WebhookUtilityTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Library\WebhookUtility::getWebhooks
+     * @covers \Pagzi\NovaWebhooks\Library\WebhookUtility::getWebhooks
      */
     public function user_can_get_a_list_of_webhooks_from_a_model_and_action()
     {
@@ -44,7 +44,7 @@ class WebhookUtilityTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Library\WebhookUtility::processWebhooks
+     * @covers \Pagzi\NovaWebhooks\Library\WebhookUtility::processWebhooks
      */
     public function processed_webhooks_will_be_dispatched_based_on_model_and_query()
     {
@@ -77,8 +77,8 @@ class WebhookUtilityTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Library\WebhookUtility::executeWebhook
-     * @covers \Dniccum\NovaWebhooks\Traits\ShouldQueueWebhook
+     * @covers \Pagzi\NovaWebhooks\Library\WebhookUtility::executeWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\ShouldQueueWebhook
      */
     public function all_webhooks_will_be_executed_via_job()
     {

@@ -1,32 +1,33 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Library;
+namespace Pagzi\NovaWebhooks\Library;
 
-use Dniccum\NovaWebhooks\Contracts\WebhookModel;
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
-use Dniccum\NovaWebhooks\Traits\DeletedWebhook;
+use Pagzi\NovaWebhooks\Contracts\WebhookModel;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Traits\DeletedWebhook;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use Dniccum\NovaWebhooks\Traits\CreatedWebhook;
-use Dniccum\NovaWebhooks\Traits\UpdatedWebhook;
+use Pagzi\NovaWebhooks\Traits\CreatedWebhook;
+use Pagzi\NovaWebhooks\Traits\UpdatedWebhook;
 
 class ModelUtility
 {
     /**
      * @return WebhookModel[]
      */
-    public static function availableModelActions() : array
+    public static function availableModelActions(): array
     {
         $models = [];
         $availableModels = self::getModels();
 
-        foreach($availableModels as $class) {
+        foreach ($availableModels as $class) {
             $classes = class_uses_recursive($class);
             $classes = array_keys($classes);
 
             $model = new WebhookModel($class);
+
             if (in_array(CreatedWebhook::class, $classes)) {
                 $model->addAction(ModelEvents::Created);
             }
@@ -37,7 +38,7 @@ class ModelUtility
                 $model->addAction(ModelEvents::Deleted);
             }
 
-            array_push($models, $model);
+            $models[] = $model;
         }
 
         return $models;
@@ -47,11 +48,11 @@ class ModelUtility
      * @param array $settings
      * @return WebhookModel[]
      */
-    public static function parseSavedList(array $settings) : array
+    public static function parseSavedList(array $settings): array
     {
         $models = [];
 
-        foreach($settings as $action => $selected) {
+        foreach ($settings as $action => $selected) {
             if ($selected) {
                 $class = \Str::before($action, ':');
                 $actionName = \Str::after($action, ':');
@@ -72,21 +73,19 @@ class ModelUtility
     {
         $modelFiles = File::allFiles(self::path());
         $models = collect($modelFiles)
-            ->map(function($item) {
+            ->map(function ($item) {
                 $path = $item->getRelativePathName();
-                $class = sprintf('\%s%s',
+                return sprintf('\%s%s',
                     self::namespace(),
-                    strtr(substr($path, 0, strrpos($path, '.')), '/', '\\'));
-
-                return $class;
+                    str_replace('/', '\\', substr($path, 0, strrpos($path, '.'))));
             })
-            ->filter(function($class) {
+            ->filter(function ($class) {
                 $valid = false;
 
                 if (class_exists($class)) {
                     $reflection = new \ReflectionClass($class);
                     $valid = $reflection->isSubclassOf(Model::class) &&
-                        !$reflection->isAbstract();
+                        ! $reflection->isAbstract();
                 }
 
                 return $valid;
@@ -100,13 +99,13 @@ class ModelUtility
      *
      * @return array
      */
-    public static function fieldArray() : array
+    public static function fieldArray(): array
     {
         $models = self::availableModelActions();
         $array = [];
 
-        foreach($models as $model) {
-            foreach($model->actions as $action) {
+        foreach ($models as $model) {
+            foreach ($model->actions as $action) {
                 $array[$model->actionName($action)] = $model->label($action);
             }
         }
@@ -119,7 +118,7 @@ class ModelUtility
     /**
      * @return string
      */
-    private static function path() : string
+    private static function path(): string
     {
         if (\App::runningUnitTests()) {
             return __DIR__.'/../../tests/Models';
@@ -134,7 +133,7 @@ class ModelUtility
     private static function namespace()
     {
         if (\App::runningUnitTests()) {
-            return "Dniccum\NovaWebhooks\Tests\Models\\";
+            return "Pagzi\NovaWebhooks\Tests\Models\\";
         }
 
         return Container::getInstance()->getNamespace();

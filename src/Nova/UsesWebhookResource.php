@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Nova;
+namespace Pagzi\NovaWebhooks\Nova;
 
 use Laravel\Nova\Nova;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Resources;
+namespace Pagzi\NovaWebhooks\Tests\Resources;
 
 class PageLikeResource extends \Illuminate\Http\Resources\Json\JsonResource
 {

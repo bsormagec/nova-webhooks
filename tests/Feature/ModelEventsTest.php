@@ -1,15 +1,15 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Feature;
+namespace Pagzi\NovaWebhooks\Tests\Feature;
 
-use Dniccum\NovaWebhooks\Enums\ModelEvents;
-use Dniccum\NovaWebhooks\Models\Webhook;
-use Dniccum\NovaWebhooks\Tests\Models\Api\PageLike;
-use Dniccum\NovaWebhooks\Tests\Models\PageView;
+use Pagzi\NovaWebhooks\Enums\ModelEvents;
+use Pagzi\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Tests\Models\Api\PageLike;
+use Pagzi\NovaWebhooks\Tests\Models\PageView;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Queue;
-use Dniccum\NovaWebhooks\Tests\TestCase;
+use Pagzi\NovaWebhooks\Tests\TestCase;
 use Spatie\WebhookServer\CallWebhookJob;
 
 class ModelEventsTest extends TestCase
@@ -19,8 +19,8 @@ class ModelEventsTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Traits\CreatedWebhook::bootCreatedWebhook
-     * @covers \Dniccum\NovaWebhooks\Library\WebhookUtility::executeWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\CreatedWebhook::bootCreatedWebhook
+     * @covers \Pagzi\NovaWebhooks\Library\WebhookUtility::executeWebhook
      */
     public function correctly_configured_webhook_fires_upon_model_creation()
     {
@@ -42,8 +42,8 @@ class ModelEventsTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Traits\CreatedWebhook::bootCreatedWebhook
-     * @covers \Dniccum\NovaWebhooks\Library\WebhookUtility::executeWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\CreatedWebhook::bootCreatedWebhook
+     * @covers \Pagzi\NovaWebhooks\Library\WebhookUtility::executeWebhook
      */
     public function incorrectly_configured_webhook_does_not_fire_upon_model_creation()
     {
@@ -73,7 +73,7 @@ class ModelEventsTest extends TestCase
         Webhook::factory()
             ->create([
                 'settings' => [
-                    'Dniccum\NovaWebhooks\Tests\Models\User'.':'.ModelEvents::Created
+                    'Pagzi\NovaWebhooks\Tests\Models\User'.':'.ModelEvents::Created
                 ]
             ]);
 
@@ -86,7 +86,7 @@ class ModelEventsTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Traits\UpdatedWebhook::bootUpdatedWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\UpdatedWebhook::bootUpdatedWebhook
      */
     public function nested_webhook_fires_upon_model_update()
     {
@@ -120,7 +120,7 @@ class ModelEventsTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Traits\DeletedWebhook::bootDeletedWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\DeletedWebhook::bootDeletedWebhook
      */
     public function webhook_fires_upon_model_deletion()
     {
@@ -143,8 +143,8 @@ class ModelEventsTest extends TestCase
 
     /**
      * @test
-     * @covers \Dniccum\NovaWebhooks\Traits\DeletedWebhook::bootDeletedWebhook
-     * @covers \Dniccum\NovaWebhooks\Traits\DeletedWebhook::deletedWebhookPayload
+     * @covers \Pagzi\NovaWebhooks\Traits\DeletedWebhook::bootDeletedWebhook
+     * @covers \Pagzi\NovaWebhooks\Traits\DeletedWebhook::deletedWebhookPayload
      */
     public function webhook_fires_with_json_resource()
     {

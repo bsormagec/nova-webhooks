@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Database\Factories;
+namespace Pagzi\NovaWebhooks\Database\Factories;
 
-use Dniccum\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Models\Webhook;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class WebhookFactory extends Factory

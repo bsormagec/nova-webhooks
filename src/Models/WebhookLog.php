@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Models;
+namespace Pagzi\NovaWebhooks\Models;
 
-use Dniccum\NovaWebhooks\Database\Factories\WebhookLogFactory;
+use Pagzi\NovaWebhooks\Database\Factories\WebhookLogFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

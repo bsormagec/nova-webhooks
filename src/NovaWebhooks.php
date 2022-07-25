@@ -1,7 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks;
+namespace Pagzi\NovaWebhooks;
 
+use Pagzi\NovaWebhooks\Nova\Webhook;
+use Pagzi\NovaWebhooks\Nova\WebhookLog;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
@@ -16,6 +18,10 @@ class NovaWebhooks extends Tool
     {
         Nova::script('nova-webhooks', __DIR__.'/../dist/js/tool.js');
         Nova::style('nova-webhooks', __DIR__.'/../dist/css/tool.css');
+        Nova::resources([
+            Webhook::class,
+            WebhookLog::class
+        ]);
     }
 
     /**
@@ -25,6 +31,6 @@ class NovaWebhooks extends Tool
      */
     public function renderNavigation()
     {
-//        return view('nova-webhooks::navigation');
+        return view('nova-webhooks::navigation');
     }
 }

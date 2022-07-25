@@ -1,8 +1,8 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Database\Factories;
+namespace Pagzi\NovaWebhooks\Tests\Database\Factories;
 
-use Dniccum\NovaWebhooks\Tests\Models\PageView;
+use Pagzi\NovaWebhooks\Tests\Models\PageView;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PageViewFactory extends Factory

@@ -1,9 +1,9 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Http\Controllers;
+namespace Pagzi\NovaWebhooks\Http\Controllers;
 
-use Dniccum\NovaWebhooks\Http\Resources\WebhookResource;
-use Dniccum\NovaWebhooks\Models\Webhook;
+use Pagzi\NovaWebhooks\Http\Resources\WebhookResource;
+use Pagzi\NovaWebhooks\Models\Webhook;
 use Illuminate\Http\Request;
 
 class NovaWebhooksController

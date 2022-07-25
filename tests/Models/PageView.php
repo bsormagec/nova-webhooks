@@ -1,10 +1,10 @@
 <?php
 
-namespace Dniccum\NovaWebhooks\Tests\Models;
+namespace Pagzi\NovaWebhooks\Tests\Models;
 
-use Dniccum\NovaWebhooks\Tests\Database\Factories\PageViewFactory;
-use Dniccum\NovaWebhooks\Traits\AllWebhooks;
-use Dniccum\NovaWebhooks\Traits\ShouldQueueWebhook;
+use Pagzi\NovaWebhooks\Tests\Database\Factories\PageViewFactory;
+use Pagzi\NovaWebhooks\Traits\AllWebhooks;
+use Pagzi\NovaWebhooks\Traits\ShouldQueueWebhook;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PageView extends \Illuminate\Database\Eloquent\Model
