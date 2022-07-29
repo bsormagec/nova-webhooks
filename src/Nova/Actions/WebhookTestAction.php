@@ -4,33 +4,37 @@ namespace Pagzi\NovaWebhooks\Nova\Actions;
 
 use Pagzi\NovaWebhooks\Enums\ModelEvents;
 use Pagzi\NovaWebhooks\Facades\WebhookModels;
-use Pagzi\NovaWebhooks\Facades\Webhooks;
-use Pagzi\NovaWebhooks\Library\WebhookUtility;
 use Pagzi\NovaWebhooks\Models\Webhook;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use OwenMelbz\RadioField\RadioButton;
-use TuneZilla\DynamicActionFields\DynamicFieldAction;
 
 class WebhookTestAction extends Action
 {
-    use InteractsWithQueue, Queueable, DynamicFieldAction;
-
-    public $showOnTableRow = true;
-
+    use InteractsWithQueue, Queueable;
+    /**
+     * @inheritdoc
+     * @var bool
+     */
     public $showOnIndex = false;
-
+    /**
+     * @inheritdoc
+     * @var bool
+     */
+    public $showOnDetail = true;
+    /**
+     * @inheritdoc
+     * @var bool
+     */
+    public $showOnTableRow = true;
     /**
      * @var Model|Webhook
      */
     protected $model;
-
     /**
      * @return string
      */
@@ -38,12 +42,18 @@ class WebhookTestAction extends Action
     {
         return __('nova-webhooks::nova.test_webhook');
     }
-
+    /**
+     * @param Model|Webhook $model
+     */
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
     /**
      * Perform the action on the given models.
      *
-     * @param \Laravel\Nova\Fields\ActionFields $fields
-     * @param \Illuminate\Support\Collection $models
+     * @param  \Laravel\Nova\Fields\ActionFields  $fields
+     * @param  \Illuminate\Support\Collection  $models
      * @return mixed
      */
     public function handle(ActionFields $fields, Collection $models)
@@ -53,16 +63,13 @@ class WebhookTestAction extends Action
          */
         foreach ($models as $model) {
             $webhookAction = $fields->get('hook');
-
             $class = \Str::before($webhookAction, ':');
             $webhookModel = $class::inRandomOrder()->first();
             $actionName = \Str::after($webhookAction, ':');
             $actionName = ModelEvents::fromValue($actionName);
-
             if (empty($webhookModel)) {
-                return Action::danger(__('nova-webhooks::nova.no_models_available', ['model' => $class]));
+                return Action::danger(__('nova-webhooks::nova.no_models_available', [ 'model' => $class ]));
             }
-
             if ($actionName->is(ModelEvents::Created)) {
                 $class::createdWebhook($webhookModel, true);
             } elseif ($actionName->is(ModelEvents::Updated)) {
@@ -72,18 +79,20 @@ class WebhookTestAction extends Action
             }
         }
     }
-
-    public function fieldsForModels(Collection $models): array
+    /**
+     * Get the fields available on the action.
+     *
+     * @return array
+     */
+    public function fields()
     {
-
-        if ($models->isEmpty()) {
-            return [];
-        }
         return [
             RadioButton::make(__('nova-webhooks::nova.webhook_to_test'), 'hook')
                 ->options(
-                    WebhookModels::parseSavedList((array) $models->first()->settings)
+                    WebhookModels::parseSavedList((array) $this->model->settings)
                 )
+                ->stack() // optional (required to show hints)
+                ->marginBetween() // optional
         ];
     }
 }
