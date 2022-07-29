@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Executes a webhook when the extended model is emits an "updated" event
- * @package dniccum/nova-webhooks
+ * @package pagzi/nova-webhooks
  */
 trait UpdatedWebhook
 {
@@ -17,7 +17,7 @@ trait UpdatedWebhook
     /**
      * @return void
      */
-    public static function bootUpdatedWebhook() : void
+    public static function bootUpdatedWebhook(): void
     {
         static::updated(function ($model) {
             self::updatedWebhook($model);
@@ -42,6 +42,9 @@ trait UpdatedWebhook
      */
     protected static function updatedWebhookPayload($model)
     {
-        return $model->toArray();
+        return [
+            'event' => ModelEvents::Updated,
+            'payload' => $model->toArray(),
+        ];
     }
 }

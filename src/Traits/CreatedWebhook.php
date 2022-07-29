@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Executes a webhook when the extended model is emits a "created" event
- * @package dniccum/nova-webhooks
+ * @package pagzi/nova-webhooks
  */
 trait CreatedWebhook
 {
@@ -17,7 +17,7 @@ trait CreatedWebhook
     /**
      * @return void
      */
-    public static function bootCreatedWebhook() : void
+    public static function bootCreatedWebhook(): void
     {
         static::created(function ($model) {
             self::createdWebhook($model);
@@ -42,6 +42,9 @@ trait CreatedWebhook
      */
     protected static function createdWebhookPayload($model)
     {
-        return $model->toArray();
+        return [
+            'event' => ModelEvents::Created,
+            'payload' => $model->toArray(),
+        ];
     }
 }

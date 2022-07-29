@@ -6,7 +6,7 @@ use Pagzi\NovaWebhooks\Jobs\DispatchWebhook;
 
 /**
  * When a webhook extends this trait, any webhooks will be dispatched to a job which will then be executed via queue
- * @package dniccum/nova-webhooks
+ * @package pagzi/nova-webhooks
  */
 trait ShouldQueueWebhook
 {

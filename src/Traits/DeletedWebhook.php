@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Executes a webhook when the extended model is emits a "deleted" event
- * @package dniccum/nova-webhooks
+ * @package pagzi/nova-webhooks
  */
 trait DeletedWebhook
 {
@@ -45,6 +45,9 @@ trait DeletedWebhook
      */
     protected static function deletedWebhookPayload($model)
     {
-        return $model->toArray();
+        return [
+            'event' => ModelEvents::Deleted,
+            'payload' => $model->toArray(),
+        ];
     }
 }
