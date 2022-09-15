@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class WebhookLog extends WebhookResource
+class WebhookLog extends NovaWebhookResource
 {
     /**
      * The model the resource corresponds to.
