@@ -2,8 +2,6 @@
 
 namespace Pagzi\NovaWebhooks;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Menu\MenuSection;
 use Pagzi\NovaWebhooks\Nova\Webhook;
 use Pagzi\NovaWebhooks\Nova\WebhookLog;
 use Laravel\Nova\Nova;
@@ -34,10 +32,5 @@ class NovaWebhooks extends Tool
     public function renderNavigation()
     {
         //return view('nova-webhooks::navigation');
-    }
-
-    public function menu(Request $request)
-    {
-        return MenuSection::make("Webhooks")->path("/webhooks")->icon("chip");
     }
 }

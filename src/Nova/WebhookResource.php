@@ -36,6 +36,17 @@ abstract class WebhookResource extends NovaResource
         'url',
     ];
 
+    /**
+     * Create a new resource instance.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model|null  $resource
+     * @return void
+     */
+    public function __construct($resource)
+    {
+        parent::__construct($resource);
+    }
+
     protected function optionGroup()
     {
         $array = WebhookModels::fieldArray();
