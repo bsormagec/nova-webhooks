@@ -47,6 +47,7 @@ trait DeletedWebhook
     {
         return [
             'event' => ModelEvents::Deleted,
+            'entity' => class_basename($model),
             'payload' => $model->toArray(),
         ];
     }

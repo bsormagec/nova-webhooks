@@ -44,6 +44,7 @@ trait CreatedWebhook
     {
         return [
             'event' => ModelEvents::Created,
+            'entity' => class_basename($model),
             'payload' => $model->toArray(),
         ];
     }

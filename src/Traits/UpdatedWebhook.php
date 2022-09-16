@@ -44,6 +44,7 @@ trait UpdatedWebhook
     {
         return [
             'event' => ModelEvents::Updated,
+            'entity' => class_basename($model),
             'payload' => $model->toArray(),
         ];
     }
