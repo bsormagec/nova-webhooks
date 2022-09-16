@@ -2,7 +2,6 @@
 
 namespace Pagzi\NovaWebhooks\Nova;
 
-use ChrisWare\NovaBreadcrumbs\Traits\Breadcrumbs;
 use Coroowicaksono\ChartJsIntegration\StackedChart;
 use Pagzi\NovaWebhooks\Models\WebhookLog;
 use Pagzi\NovaWebhooks\Nova\WebhookLog as WebhookLogResource;
@@ -16,7 +15,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Webhook extends WebhookResource
 {
-    use Breadcrumbs;
     /**
      * Get the fields displayed by the Webhook resource.
      *
