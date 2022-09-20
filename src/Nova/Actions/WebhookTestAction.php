@@ -2,6 +2,7 @@
 
 namespace Pagzi\NovaWebhooks\Nova\Actions;
 
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Pagzi\NovaWebhooks\Enums\ModelEvents;
 use Pagzi\NovaWebhooks\Facades\WebhookModels;
@@ -89,12 +90,10 @@ class WebhookTestAction extends Action
     public function fields(NovaRequest $request)
     {
         return [
-            RadioButton::make(__('nova-webhooks::nova.webhook_to_test'), 'hook')
+            Select::make(__('nova-webhooks::nova.webhook_to_test'), 'hook')
                 ->options(
                     WebhookModels::parseSavedList((array) $this->model->settings)
-                )
-                ->stack() // optional (required to show hints)
-                ->marginBetween() // optional
+                )->displayUsingLabels()
         ];
     }
 }
