@@ -30,7 +30,7 @@ class WebhookTestAction extends Action
      * @inheritdoc
      * @var bool
      */
-    public $showOnTableRow = true;
+    public $showInline = true;
     /**
      * @var Model|Webhook
      */
